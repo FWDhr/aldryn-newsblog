@@ -3,7 +3,7 @@ from django.conf.urls import url
 from aldryn_newsblog.views import (
     ArticleDetail, ArticleList, AuthorArticleList, CategoryArticleList,
     YearArticleList, MonthArticleList, DayArticleList, TagArticleList,
-    ArticleSearchResultsList)
+    ArticleSearchResultsList, BeforeYearArticleList)
 from aldryn_newsblog.feeds import LatestArticlesFeed, TagFeed, CategoryFeed
 
 urlpatterns = [
@@ -16,6 +16,8 @@ urlpatterns = [
 
     url(r'^(?P<year>\d{4})/$',
         YearArticleList.as_view(), name='article-list-by-year'),
+    url(r'^before/(?P<year>\d{4})/$',
+        BeforeYearArticleList.as_view(), name='article-list-before-year'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$',
         MonthArticleList.as_view(), name='article-list-by-month'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$',
