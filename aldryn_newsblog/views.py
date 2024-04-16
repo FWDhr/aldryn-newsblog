@@ -392,7 +392,7 @@ class YearArticleList(DateRangeArticleList):
 class BeforeYearArticleList(DateRangeArticleList):
     def _daterange_from_kwargs(self, kwargs):
         date_from = (
-            Article.objects.order_by('-publishing_date').first().publishing_date
+            Article.objects.order_by('publishing_date').first().publishing_date
         )
         date_to = datetime(int(kwargs['year']), 1, 1)
         return date_from, date_to
